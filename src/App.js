@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 import './App.css';
+import Games from './Games'
 
-function App() {
+const App = () => {
+  const [schedule, setSchedule] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://www.thesportsdb.com/api/v1/json/40130162/eventsnext.php?id=135257')
+    .then(res => {
+      setSchedule(res.data.events)
+    }).catch(err => alert('error'))
+  }, [])
+
+  console.log(schedule)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <h1>{`Royal's Next 5 Games!`}</h1>
+      {schedule.map(object=> {
+        return(
+          <Games 
+          key={object.idEvent}
+          aname={object.strAwayTeam}
+          hname={object.strHomeTeam}
+          ascore={object.intAwayScore}
+          hscore={object.intHomeScore}
+          image={object.strThumb}
+          time={object.strTime}
+          date={object.dateEvent}
+          />
+        )
+      })}
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
