@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div>
-    <h1>{`Royal's Next 5 Games!`}</h1>
+    <h1>Royal Next 5 Games!</h1>
       {schedule.map(object=> {
         return(
           <Games 
