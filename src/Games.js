@@ -1,6 +1,7 @@
 
 import React from 'react'
 import './Games2.css'
+import animate from 'animate.css'
 
 const Games = ({hname, aname, date, time, hscore, ascore, image}) => {
     return (
@@ -14,8 +15,13 @@ const Games = ({hname, aname, date, time, hscore, ascore, image}) => {
             
 
             <div className='title'>
-            	<h3>{hname} VS</h3> 
-            	<h3>{aname}</h3>
+                <div className= 'homeContainer'>
+            	<h3 className ='animate__animated animate__bounce homeName'>{hname}</h3> 
+                </div>
+                <div>
+                    <p>@</p>
+                </div>
+            	<h3 className = 'animate__animated animate__bounce awayName'> <br />{aname}</h3>
             </div>
             
             <div className='date'>
@@ -27,7 +33,7 @@ const Games = ({hname, aname, date, time, hscore, ascore, image}) => {
             <div className ='image-container'>
                 <img className='baseballpic' src={image} alt ='baseball' />
             </div>
-            <hr/>
+            
         </>
     )
 }
