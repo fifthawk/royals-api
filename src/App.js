@@ -7,7 +7,7 @@ const App = () => {
   const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
-    // this link requires an API Key --> axios.get('https://www.thesportsdb.com/api/v1/json/40130162/eventsnext.php?id=135257')
+    axios.get('https://www.thesportsdb.com/api/v1/json/40130162/eventsnext.php?id=135257')
     .then(res => {
       setSchedule(res.data.events)
     }).catch(err => alert('error'))
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div>
-    <h1>Royal Next 5 Games!</h1>
+    <h1>Royals Next 5 Games!</h1>
       {schedule.map(object=> {
         return(
           <Games 
